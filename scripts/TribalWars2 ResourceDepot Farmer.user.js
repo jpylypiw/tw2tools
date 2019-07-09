@@ -1,11 +1,16 @@
 // ==UserScript==
 // @name         TribalWars2 ResourceDepot Farmer
 // @namespace    http://tampermonkey.net/
-// @version      0.2
-// @description  This bot checks the Resource Depot for new Jobs and automatically executes and collects these jobs.
+// @version      0.3
 // @author       JPylypiw (https://github.com/JPylypiw)
+// @description  This bot checks the Resource Depot for new Jobs and automatically executes and collects these jobs.
+// @homepage     https://github.com/jpylypiw/tw2tools
+// @icon64       https://de.tribalwars2.com/favicon.ico
+// @updateURL    https://github.com/jpylypiw/tw2tools/raw/master/scripts/TribalWars2%20ResourceDepot%20Farmer.user.js
+// @supportURL   https://github.com/jpylypiw/tw2tools/issues
 // @match        https://de.tribalwars2.com/game.php*
 // @grant        none
+// @noframes
 // ==/UserScript==
 
 var modelDataService,

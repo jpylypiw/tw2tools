@@ -1,11 +1,16 @@
 // ==UserScript==
 // @name         TribalWars2 Resource Balancer
 // @namespace    http://tampermonkey.net/
-// @version      0.2
-// @description  This bot exchanges resources between the villages. You can set the threshold to a value between 0 and 1. Practical values are between 0.3 and 0.7.
+// @version      0.3
 // @author       JPylypiw (https://github.com/JPylypiw)
+// @description  This bot exchanges resources between the villages. You can set the threshold to a value between 0 and 1. Practical values are between 0.3 and 0.7.
+// @homepage     https://github.com/jpylypiw/tw2tools
+// @icon64       https://de.tribalwars2.com/favicon.ico
+// @updateURL    https://github.com/jpylypiw/tw2tools/raw/master/scripts/TribalWars2%20Resource%20Balancer.user.js
+// @supportURL   https://github.com/jpylypiw/tw2tools/issues
 // @match        https://de.tribalwars2.com/game.php*
 // @grant        none
+// @noframes
 // ==/UserScript==
 
 var threshold = 0.3;

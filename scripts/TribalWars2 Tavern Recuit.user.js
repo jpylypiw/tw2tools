@@ -1,11 +1,16 @@
 // ==UserScript==
 // @name         TribalWars2 Tavern Recuit
 // @namespace    http://tampermonkey.net/
-// @version      0.1
-// @description  This is a simple bot that recuits Spys in the Tavern when there are free slots.
+// @version      0.2
 // @author       JPylypiw (https://github.com/JPylypiw)
+// @description  This is a simple bot that recuits Spys in the Tavern when there are free slots.
+// @homepage     https://github.com/jpylypiw/tw2tools
+// @icon64       https://de.tribalwars2.com/favicon.ico
+// @updateURL    https://github.com/jpylypiw/tw2tools/raw/master/scripts/TribalWars2%20Tavern%20Recuit.user.js
+// @supportURL   https://github.com/jpylypiw/tw2tools/issues
 // @match        https://de.tribalwars2.com/game.php*
 // @grant        none
+// @noframes
 // ==/UserScript==
 
 function waitForInjector() {
@@ -38,7 +43,7 @@ function startBot() {
                             function (spyid, i, callback2) {
                                 if (scoutinginfo["spy_" + spyid] == 0 && canAffordSpy(villageinfo.resources, scoutinginfo.spy_prices, i) && spyIdUnlocked(spyid, tavernlevel)) {
                                     villageinfo.resources = correctResources(villageinfo.resources, scoutinginfo.spy_prices, i);
-                                    recuitScout(village, spyid, function(info) {
+                                    recuitScout(village, spyid, function (info) {
                                         console.log(info);
                                         callback2();
                                     });
