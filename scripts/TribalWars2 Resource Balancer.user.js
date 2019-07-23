@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         TribalWars2 Resource Balancer
 // @namespace    http://tampermonkey.net/
-// @version      0.4
+// @version      0.5
 // @author       JPylypiw (https://github.com/JPylypiw)
 // @description  This bot exchanges resources between the villages. You can set the threshold to a value between 0 and 1. Practical values are between 0.3 and 0.7.
 // @homepage     https://github.com/jpylypiw/tw2tools
@@ -156,26 +156,26 @@ function balanceResources() {
         function (lres, n, lcallback) {
             doSynchronousLoop(moreRes,
                 function (mres, i, mcallback) {
-                    if (mres.resource === lres.resource) {
+                    if (mres.resource === lres.resource && lres.amount > 0) {
 
                         // Maximale Lieferungsgröße erfassen
                         getMerchantInfo(mres.vid, function (data) {
 
                             if (data.free > 0) {
-                                amount = mres.amount;
                                 maxMerchantAmount = data.free * 1000;
-
-                                if (amount > maxMerchantAmount) {
-                                    amount = maxMerchantAmount;
+                                if (mres.amount > maxMerchantAmount) {
+                                    mres.amount = maxMerchantAmount;
                                 }
 
-                                if (amount > lres.amount) {
+                                if (mres.amount > lres.amount) {
                                     amount = lres.amount;
+                                    lres.amount = 0;
                                     moreRes[i].amount -= amount;
                                 } else {
+                                    amount = mres.amount;
+                                    lres.amount = lres.amount - mres.amount;
                                     moreRes.splice(i, 1);
                                 }
-                                lres.amount = lres.amount - amount;
 
                                 sendResources(mres.vid, lres.vid, amount, lres.resource, function (data) {
                                     console.log(data);
